@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header, NavList, StyledLink, LoaderContainer } from './Layout.styled';
-import { Circles } from 'react-loader-spinner';
+import { Oval } from 'react-loader-spinner';
 
 const Layout = () => {
   return (
@@ -20,11 +20,11 @@ const Layout = () => {
         <Suspense
           fallback={
             <LoaderContainer>
-              <Circles
+              <Oval
                 height="80"
                 width="80"
                 color="#ff0068"
-                ariaLabel="circles-loading"
+                ariaLabel="oval-loading"
                 wrapperStyle={{}}
                 wrapperClass=""
                 visible={true}

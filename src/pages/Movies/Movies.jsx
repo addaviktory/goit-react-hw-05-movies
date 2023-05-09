@@ -18,6 +18,7 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const searhQuery = searchParams.get('query');
+  const [searchQuery, setSearchQuery] = useState(searhQuery || '');
 
   useEffect(() => {
     if (searhQuery === null) {
@@ -50,7 +51,7 @@ const Movies = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const query = e.target[0].value.trim();
+    const query = searchQuery.trim();
     if (query === '') {
       return;
     }
@@ -60,7 +61,12 @@ const Movies = () => {
   return (
     <MoviesContainer>
       <MoviesSearchForm onSubmit={e => handleSubmit(e)}>
-        <MoviesSearchInput type="text" placeholder="Search images..." />
+      <MoviesSearchInput
+      type="text"
+      placeholder="Search images..."
+      value={searchQuery}
+      onChange={e => setSearchQuery(e.target.value)}
+/>
         <MoviesSearchBtn type="submit">
           <MoviesSearchIcon
             version="1.1"

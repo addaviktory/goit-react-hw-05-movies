@@ -13,7 +13,7 @@ export const Cast = () => {
     const getMovieCastById = async () => {
       try {
         const respons = await axios.get(
-          `https://api.themoviedb.org/3/movie//${movieId}/credits?api_key=${API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
         );
 
         const data = respons.data.cast;
@@ -30,13 +30,12 @@ export const Cast = () => {
 
         setCast(filteredData);
       } catch (error) {
-        console.log(error);
+        console.log(error.response.data);
       }
     };
 
     getMovieCastById();
   }, [movieId]);
-
   return (
     <>
       {cast !== null && cast.length !== 0 ? (
